@@ -6,14 +6,13 @@ const path = require("path");
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("Seeding facilities (JS)...");
+  console.log("Seeding Database...");
 
+  // 1. Seed Facilities
+  console.log("-> Seeding facilities...");
   try {
-     // Correct syntax for Prisma Client method calls
      await prisma.facility.deleteMany();
-  } catch (error) {
-    console.log("Could not clear existing facilities:", error.message);
-  }
+  } catch (e) {}
 
   const facilitiesPath = path.join(__dirname, "../src/data/facilities.seed.json");
   const facilitiesData = JSON.parse(fs.readFileSync(facilitiesPath, "utf-8"));

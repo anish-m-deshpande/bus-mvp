@@ -1,42 +1,52 @@
 [
   {
-    "id": "brake-failure",
-    "label": "Mike - Soft Brakes (High Risk)",
+    "id": "brake-failure-ma",
+    "label": "Mike - Soft Brakes (Boston, MA)",
     "transcript": "Hey this is Mike on bus 402, I'm in Boston near South Station. My brakes are feeling soft and I have a full load of passengers. I can't drive this safely, need a swap or a tow immediately."
   },
   {
-    "id": "ac-issue",
-    "label": "Sarah - HVAC Failure",
+    "id": "ac-issue-pa",
+    "label": "Sarah - HVAC Failure (Philadelphia, PA)",
     "transcript": "Hi it's Sarah, dispatch. Routing a message for bus 108. I'm in Philadelphia, at the corner of 5th and Main. The AC just completely cut out, it's about 95 degrees today. Passengers are complaining."
   },
   {
-    "id": "door-stuck",
-    "label": "John - Rear Door Sensor",
+    "id": "electrical-ny",
+    "label": "Marcus - Total Power Loss (Brooklyn, NY)",
+    "transcript": "This is bus 550. I'm in Brooklyn, New York, just off the bridge. The entire dash went black and the engine died. I have emergency lights but that's it. It's an electrical total failure."
+  },
+  {
+    "id": "suspension-nj",
+    "label": "Jim - Front Suspension (Newark, NJ)",
+    "transcript": " Jim on bus 77. Pulling into the Newark terminal in Jersey. There is a loud banging coming from the front suspension every time I hit a bump. It's leaning hard to the left."
+  },
+  {
+    "id": "ada-lift-ri",
+    "label": "Elena - ADA Lift Stuck (Providence, RI)",
+    "transcript": "Bus 12 in Providence, Rhode Island. The ADA lift is stuck halfway deployed. I can't retract it and I have a passenger who needs to get off at this stop. Requesting mobile tech."
+  },
+  {
+    "id": "engine-overheat-ct",
+    "label": "Tom - Overheating (Hartford, CT)",
+    "transcript": "Bus 909, I'm on I-84 near Hartford, Connecticut. The temp gauge is in the red and there's coolant leaking from the rear. I'm pulled over on the shoulder. Engine is smoking."
+  },
+  {
+    "id": "door-stuck-ma",
+    "label": "John - Rear Door Sensor (Cambridge, MA)",
     "transcript": "Bus 99, John here. I'm in Cambridge. The rear door sensor is acting up, won't let me pull away from the curb. I've tried cycling the battery but no luck."
   },
   {
-    "id": "medical-emergency",
-    "label": "Urgent - Medical Flag",
-    "transcript": "Dispatch! This is bus 55. We're on the bridge coming into Boston. I have a passenger who has collapsed. We need an ambulance at the next stop. I'm stopping the bus now."
+    "id": "medical-emergency-pa",
+    "label": "Urgent - Medical Flag (Philadelphia, PA)",
+    "transcript": "Dispatch! This is bus 55. We're on the bridge coming into Philadelphia. I have a passenger who has collapsed. We need an ambulance at the next stop. I'm stopping the bus now."
   },
   {
-    "id": "engine-smoke",
-    "label": "Critical - Smoke from Engine",
-    "transcript": "This is bus 212. I'm pulled over on I-95 South near the PA border. There is smoke coming from the engine compartment. No fire yet, but I'm evacuating the bus."
+    "id": "tire-puncture-ny",
+    "label": "Flat Tire (Albany, NY)",
+    "transcript": "Hey this is driver 44. I'm in Albany, New York. I just hit a piece of debris and my rear outer tire is completely shredded. I'm at the bus stop on State St. Need a tire swap."
   },
   {
-    "id": "suspension-noise",
-    "label": "Dave - Grinding Noise",
-    "transcript": "Hey it's Dave. I'm in Quincy. Bringing bus 303 back. There's a heavy grinding noise from the front right wheel every time I turn. It's driveable but noisy."
-  },
-  {
-    "id": "ada-lift",
-    "label": "ADA Lift Malfunction",
-    "transcript": "Bus 15. We're in West Philly. The ADA lift is stuck halfway down. I have a wheelchair user stuck. I need a technician out here to manually retract it."
-  },
-  {
-    "id": "comms-failure",
-    "label": "ITS/Radio Issue",
-    "transcript": "Bus 44. I'm in downtown Boston. My radio is just static and the ITS terminal keeps rebooting. Just calling from my personal cell to let you know."
+    "id": "comms-failure-nh",
+    "label": "ITS/Radio Issue (Concord, NH)",
+    "transcript": "Bus 44. I'm in Concord, New Hampshire. My radio is just static and the ITS terminal keeps rebooting. Just calling from my personal cell to let you know. Everything else is fine."
   }
 ]

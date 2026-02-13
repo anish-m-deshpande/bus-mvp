@@ -4,7 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Link from "next/link";
-import { Bus, List, PlusCircle } from "lucide-react";
+import { Bus, List, PlusCircle, Wrench } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,15 +26,18 @@ export default function RootLayout({
             <header className="border-b bg-white sticky top-0 z-10">
               <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight text-slate-900 hover:opacity-80 transition-opacity">
-                  <div className="bg-blue-600 p-1 rounded-md">
+                  <div className="bg-blue-600 p-1 rounded-md shadow-sm">
                     <Bus className="w-6 h-6 text-white" />
                   </div>
-                  <span>FleetAI</span>
                 </Link>
                 <nav className="flex items-center gap-6">
                   <Link href="/incidents" className="text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-1.5 px-3 py-2 rounded-md hover:bg-slate-100 transition-colors">
                     <List className="w-4 h-4" />
-                    List
+                    Incidents
+                  </Link>
+                  <Link href="/facilities" className="text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-1.5 px-3 py-2 rounded-md hover:bg-slate-100 transition-colors">
+                    <Wrench className="w-4 h-4" />
+                    Facilities
                   </Link>
                   <Link href="/" className="text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 flex items-center gap-1.5 px-4 py-2 rounded-md shadow-sm transition-colors">
                     <PlusCircle className="w-4 h-4" />

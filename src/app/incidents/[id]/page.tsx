@@ -260,7 +260,7 @@ export default function IncidentDetailPage() {
                                          <p className="text-[10px] uppercase text-slate-400 font-bold">Extracted Location</p>
                                          <p className="font-medium">
                                              {extraction.city || incident.city || "Unknown City"}, 
-                                             {extraction.state || incident.state || ""}
+                                             {" "}{extraction.state || incident.state || ""}
                                          </p>
                                          <p className="text-xs text-slate-500 italic">{extraction.location_text}</p>
                                      </div>
