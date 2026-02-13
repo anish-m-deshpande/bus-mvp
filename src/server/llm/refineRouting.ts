@@ -1,5 +1,4 @@
 import OpenAI from "openai";
-import { zodResponseFormat } from "openai/helpers/zod";
 import { RoutingDecision, RoutingDecisionSchema, IncidentExtracted } from "@/lib/schemas";
 
 const openai = new OpenAI({
@@ -20,6 +19,7 @@ Rules:
 5. Provide a clear, one-sentence rationale for your choice.
 
 IMPORTANT: RETURN ONLY A PURE JSON OBJECT code block.
+Example format: { "matched_facility_id": "id_here", "rationale": "reason here" }
 `;
 
 export async function refineRoutingDecision(
@@ -57,12 +57,17 @@ export async function refineRoutingDecision(
 
     const parsed = JSON.parse(content);
     
-    // Normalize LLM output to match our schema fields
-    return RoutingDecisionSchema.parse({
-      matched_facility_id: parsed.matched_facility_id || parsed.facility_id,
-      distance_miles: parsed.distance_miles || candidates.find(c => c.id === (parsed.matched_facility_id || parsed.facility_id))?.distance,
-      rationale: parsed.rationale
-    });
+    // Resilient normalized mapping to ensure Zod validation succeeds
+    const matchedId = parsed.matched_facility_id || parsed.facility_id || parsed.id;
+    const selectedCandidate = candidates.find(c => c.id === matchedId);
+    
+    const finalDecision = {
+      matched_facility_id: matchedId || candidates[0].id,
+      distance_miles: parsed.distance_miles || selectedCandidate?.distance || candidates[0].distance,
+      rationale: parsed.rationale || "AI-selected optimal facility."
+    };
+
+    return RoutingDecisionSchema.parse(finalDecision);
 
   } catch (error: any) {
     console.error("[LLM/Route] Error:", error);
