@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Northeast Transit Center",
+    "address": "100 Main St",
+    "city": "Boston",
+    "state": "MA",
+    "zip": "02108",
+    "lat": 42.3601,
+    "lon": -71.0589,
+    "coverage_states": ["MA", "NH", "RI"],
+    "capabilities": ["Doors", "Brakes", "EngineOverheat", "Electrical", "SteeringSuspension"],
+    "hours": "24/7",
+    "contact_email": "boston@transit.center"
+  },
+  {
+    "name": "Mid-Atlantic Fleet Serivce",
+    "address": "500 Market St",
+    "city": "Philadelphia",
+    "state": "PA",
+    "zip": "19106",
+    "lat": 39.9526,
+    "lon": -75.1652,
+    "coverage_states": ["PA", "NJ", "DE"],
+    "capabilities": ["TiresWheels", "ADAEquipment", "HVAC", "CommsITS"],
+    "hours": "business",
+    "contact_email": "philly@transit.center"
+  },
+  {
+    "name": "MA State Ops Desk",
+    "address": "1 State St",
+    "city": "Boston",
+    "state": "MA",
+    "zip": "02109",
+    "lat": 42.3588,
+    "lon": -71.0573,
+    "coverage_states": ["MA"],
+    "capabilities": ["SafetySecurityMedical", "AccidentIncident", "Other"],
+    "hours": "24/7",
+    "contact_email": "ops.ma@transit.center"
+  },
+  {
+    "name": "PA State Ops Desk",
+    "address": "1 Penn Center",
+    "city": "Philadelphia",
+    "state": "PA",
+    "zip": "19103",
+    "lat": 39.9545,
+    "lon": -75.1685,
+    "coverage_states": ["PA"],
+    "capabilities": ["SafetySecurityMedical", "AccidentIncident", "Other"],
+    "hours": "24/7",
+    "contact_email": "ops.pa@transit.center"
+  }
+]

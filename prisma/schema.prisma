@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Facility {
+  id              String   @id @default(cuid())
+  name            String
+  address         String
+  city            String
+  state           String
+  zip             String
+  lat             Float
+  lon             Float
+  coverage_states String   // JSON stringified array
+  capabilities    String   // JSON stringified array of IssueCategory
+  hours           String   // "24/7" | "business"
+  contact_email   String
+  incidents       Incident[]
+}
+
+model Incident {
+  id                String   @id @default(cuid())
+  createdAt         DateTime @default(now())
+  audioFilename     String
+  transcriptText    String?
+  
+  // Extracted Fields (JSON)
+  city              String?
+  state             String?
+  locationText      String?
+  issueCategory     String?  // IssueCategory
+  confidence        Float?
+  symptoms          String?  // JSON stringified array
+  driveable         String   @default("unknown") // "yes" | "no" | "unknown"
+  passengersOnboard String   @default("unknown") // "yes" | "no" | "unknown"
+  safetyFlags       String?  // JSON stringified array
+  callbackNumber    String?
+  busId             String?
+
+  // Routing Decision (JSON)
+  matchedFacility   Facility? @relation(fields: [matchedFacilityId], references: [id])
+  matchedFacilityId String?
+  distanceMiles     Float?
+  rationale         String?
+
+  status            String   @default("new") // "new" | "notified" | "acknowledged"
+}
