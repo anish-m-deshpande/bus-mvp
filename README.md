@@ -1,69 +1,78 @@
 # AI-Powered Voicemail Triage MVP
 
-An autonomous dispatcher agent that transcribes bus driver voicemails, extracts structured incident data using AI, and intelligently routes the issue to the nearest capable maintenance facility.
+This is an autonomous dispatcher agent that transcribes voicemails from bus drivers, extracts structured incident data using AI, and routes the issue to the nearest suitable maintenance facility.
 
-## 🚀 Quick Start
+## Quick Start
 
-1. **Install Dependencies:**
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-2. **Configure AI Key (REQUIRED):**
-   Copy `.env.example` to `.env` and replace `your-api-key-here` with your actual **OpenAI API Key**.
+2. Set up your AI key (required):
+   Copy .env.example to .env and replace `your-api-key-here` with your actual OpenAI API key.
    ```bash
    cp .env.example .env
    ```
 
-3. **Initialize Database:**
+3. Initialize the database:
    ```bash
    npx prisma db push
    node prisma/seed.js
    ```
 
-4. **Launch Application:**
+4. Run the application:
    ```bash
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000)
+   Open http://localhost:3000
 
 ---
 
-## 🛠️ Transcription Pipeline
+## Transcription Pipeline
 
-This system uses the **OpenAI Whisper API** for high-speed, reliable transcription. 
+The system uses OpenAI's Whisper API for reliable transcription.
 
-- **Supports:** `.webm`, `.wav`, `.mp3`, and `.m4a` native uploads.
-- **Workflow:** Browser Recording → Multipart Upload → Whisper API → Structured Extraction → Routing.
+- Supports .webm, .wav, .mp3, and .m4a uploads.
+- Workflow: Browser recording or upload → Whisper API → Structured extraction → Routing.
 
 ---
 
-## 🏗️ The Architecture
+## Architecture
 
-### 1. Intake
-Drivers can record directly in the browser using the **MediaRecorder API** or upload existing audio files. Visual feedback including waveforms and timers are provided.
+### Intake
+Drivers can record audio directly in the browser with the MediaRecorder API or upload files. It provides visual feedback like waveforms and timers.
 
-### 2. Transcription
-Handled via `openai.audio.transcriptions`. This cloud-based approach ensures high accuracy across various accents and noisy background environments typical in transit scenarios.
+### Transcription
+Handled by openai.audio.transcriptions for high accuracy, even with accents or background noise common in transit.
 
-### 3. Extraction (LLM)
-The transcript is processed by an LLM to identify:
-- **Entities**: Bus ID, City, State, Callback Number.
-- **Risk Profile**: Safety flags (Fire, Smoke, Brakes), Symptoms, and Driveability.
-- **Taxonomy**: Automatic classification into categories like HVAC, Electrical, or ADA Equipment.
+### Extraction (LLM)
+The transcript is processed by a large language model to identify:
+- Entities: Bus ID, City, State, Callback Number.
+- Risk Profile: Safety flags (e.g., fire, smoke, brakes), symptoms, and driveability.
+- Taxonomy: Classification into categories like HVAC, Electrical, or ADA equipment.
 
-### 4. Spatial Routing
-- **Geocoding**: Incident location is resolved via OpenStreetMap Nominatim.
-- **Matching**: Proximity calculation (Haversine) against a registry of facilities.
-- **Refinement**: An AI dispatcher selects the best facility based on the specialized equipment required for the reported issue.
+### Spatial Routing
+- Geocoding: Resolves incident location using OpenStreetMap Nominatim.
+- Matching: Calculates proximity (Haversine formula) to registered facilities.
+- Refinement: AI selects the best facility based on the equipment needed for the issue.
 
-### 5. Notification
-Automated HTML email alerts are sent to the matched facility via **Nodemailer**. (Defaults to Ethereal.email sandbox for testing).
+### Notification
+Sends automated HTML email alerts to the matched facility using Nodemailer (defaults to Ethereal.email for testing).
 
-## 📂 Project Structure
+## Project Structure
 
 - `src/server/transcription/`: Whisper API integration.
-- `src/server/llm/`: Extraction and routing refinement logic.
+- `src/server/llm/`: Extraction and routing refinement.
 - `src/server/geo/`: Geocoding and distance utilities.
 - `src/app/api/`: REST endpoints for the triage pipeline.
-- `src/app/demo/`: Guided demonstration hub with multi-state personas.
+- `src/app/demo/`: Demo hub with multi-state personas.
+
+## LangSmith Tracing
+
+This project includes LangSmith tracing for LLM calls in extraction and routing. With `LANGCHAIN_TRACING_V2=true` and your API key set, traces will appear automatically in your LangSmith dashboard (https://smith.langchain.com/).
+
+To view traces:
+1. Run the app: `npm run dev`
+2. Trigger an incident via the demo interface.
+3. Check your project (e.g., "Bus Project") in LangSmith for detailed logs, inputs, outputs, and performance metrics.

@@ -18,17 +18,17 @@ export const IssueCategoryEnum = z.enum([
 export type IssueCategory = z.infer<typeof IssueCategoryEnum>;
 
 export const IncidentExtractedSchema = z.object({
-  city: z.string().nullable(),
-  state: z.string().nullable(),
-  location_text: z.string().nullable(),
+  city: z.string().nullable().optional(),
+  state: z.string().nullable().optional(),
+  location_text: z.string().nullable().optional(),
   issue_category: IssueCategoryEnum,
   confidence: z.number(),
   symptoms: z.array(z.string()),
   driveable: z.enum(["yes", "no", "unknown"]),
   passengers_onboard: z.enum(["yes", "no", "unknown"]),
   safety_flags: z.array(z.string()),
-  callback_number: z.string().nullable(),
-  bus_id: z.string().nullable(),
+  callback_number: z.string().nullable().optional(),
+  bus_id: z.string().nullable().optional(),
 });
 
 export type IncidentExtracted = z.infer<typeof IncidentExtractedSchema>;
